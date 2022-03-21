@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/style.css">
+
+<title>Unilever</title>
+</head>
+<body>
+	<nav th:replace="~{fragment/navbar :: navBar}"></nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-auto">
+				<h3>Cadastro de material</h3>
+			</div>
+		</div>
+		<form action="/material-register" method="post" class="" id="form">
+			<div class="row">
+				<div class="col-6">
+					<label for="">SKU</label> <select class="form-select"
+						aria-label="Default select example" name="ucxCod">
+						<div th:each="ucx: ${ucxList}">
+							<option th:text='${ucx.ucxId + " (" + ucx.name  + ")" }'
+								th:value='${ucx.ucxId}'></option>
+						</div>
+					</select>
+				</div>
+				<div class="col-6">
+					<label for="">Código</label> <input type="number"
+						class="form-control" placeholder="Exemplo: 6791878" name="cod"
+						min="0" step="1" required="required">
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<label for="">Descrição</label> <input type="text"
+						class="form-control" placeholder="Exemplo: Tampa 250g azul"
+						name="name" required="required">
+				</div>
+				<div class="col-3">
+					<label for="">Unidade</label> <select id="unType"
+						class="form-select" aria-label="Default select example"
+						required="required" name="unName" onchange="unTypeF()">
+						<option value="un">un</option>
+						<option value="kg">KG</option>
+
+					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-auto">
+					<label>Peso por unidade produzida</label> <input step="any"
+						id="weightToProduceOne" type="number" class="form-control"
+						placeholder="Exemplo: 0.013" name="weightToProduceOne"
+						required="required">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-auto">
+					<label>Envolvido por caixa</label> <input class="form-check-input"
+						type="checkbox" id="box" name="box" onchange="boxChange()">
+				</div>
+				<div class="col-auto">
+					<label>Multiplica</label> <input class="form-check-input"
+						type="checkbox" id="multiple" name="multiple">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-auto">
+					<label>Unidade por caixa</label> <input type="number"
+						class="form-control" id="unPerBox" placeholder="Exemplo: 5"
+						name="unPerBox" min="0" step="1" required="required">
+				</div>
+				<div class="col-auto">
+					<label>Unidade total</label> <input type="number"
+						class="form-control" placeholder="Exemplo: 10" name="unTotal"
+						min="0" step="1" required="required">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<button class="btn btn-primary" type="submit">Cadastrar</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+	<script src="js/materialRegister.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+</html>
