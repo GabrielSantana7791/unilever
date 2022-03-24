@@ -1,11 +1,26 @@
-package com.unilever.request.etc;
+package com.unilever.request.entity;
 
-public class Material {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.unilever.request.etc.Machine;
+
+@Entity
+public class MaterialEntity {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	int id;
+	
+	
 	
 	private String name, unName, cod, ucxCod;
 	private float unPerBox, unTotal;
 	
-	public Material(String name, String unName, String cod, String ucxCod, float unPerBox, float unTotal){
+	public MaterialEntity(String name, String unName, String cod, String ucxCod, float unPerBox, float unTotal){
 		this.name = name;
 		this.unName = unName;
 		this.cod = cod;
@@ -50,9 +65,18 @@ public class Material {
 	public void setUnTotal(float unTotal) {
 		this.unTotal = unTotal;
 	}
+
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	
 	
 
 }
-
-/* unPerBox = unidade por caixa ou laminado */

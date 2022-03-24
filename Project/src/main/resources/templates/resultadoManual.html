@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
+
+<title>Unilever</title>
+</head>
+<body>
+	<div class="container" id="">
+		<div class="row justify-content-center">
+			<div class="col-md-6 justify-content-center">
+				<img src="images/logo.png" alt="logo" class="img-fluid">
+				<div class="h3">Seleção manual.</div>
+				<br>
+
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Cod produção</th>
+							<th scope="col">Material</th>
+							<th scope="col">Cod material</th>
+							<th scope="col">Quantidade mat a pedir</th>
+							<th scope="col">Pallet necessário</th>
+							<th scope="col">Caixas necessárias</th>
+							<th scope="col">Caixas a sobrar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<div th:each="material: ${resultList}">
+						<tr>
+							<td th:text='${material.ucxCod}'></td>
+							<td th:text='${material.name}'></td>
+							<td th:text='${material.cod}'></td>
+							<td th:text='${material.needUn}'></td>
+							<td th:text='${material.needMaterialUn}'></td>
+							<td th:text='${material.needBox}'></td>
+							<td th:text='${material.unBoxRest}'></td>
+						</tr>
+
+
+						</div>
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<script src="css/bootstrap.js"></script>
+</body>
+</html>

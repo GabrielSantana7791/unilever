@@ -1,10 +1,13 @@
 package com.unilever.request.etc;
 
+import com.unilever.request.entity.MaterialEntity;
+
 public class MaterialCalculatorResults {
 	private float needMaterialUn, needUn, needBox, unBoxRest, unTotalRest, demand;
-	private Material material;
+	private MaterialEntity material;
+	private String name, unName, cod, ucxCod;
 	
-	MaterialCalculatorResults(Material material, float needMaterialUn, float needUn, float needBox, float unBoxRest, float unTotalRest, float demand){
+	MaterialCalculatorResults(MaterialEntity material, float needMaterialUn, float needUn, float needBox, float unBoxRest, float unTotalRest, float demand){
 		this.needMaterialUn = needMaterialUn;
 		this.needUn = needUn;
 		this.needBox = needBox;
@@ -45,6 +48,40 @@ public class MaterialCalculatorResults {
 
 	public void setUnBoxRest(float unBoxRest) {
 		this.unBoxRest = unBoxRest;
+	}
+	
+	
+
+	public String getName() {
+		return material.getName();
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getUnName() {
+		return material.getUnName();
+	}
+
+	public void setUnName(String unName) {
+		this.unName = unName;
+	}
+
+	public String getCod() {
+		return material.getCod();
+	}
+
+	public void setCod(String cod) {
+		this.cod = cod;
+	}
+
+	public String getUcxCod() {
+		return material.getUcxCod();
+	}
+
+	public void setUcxCod(String ucxCod) {
+		this.ucxCod = ucxCod;
 	}
 
 	@Override
