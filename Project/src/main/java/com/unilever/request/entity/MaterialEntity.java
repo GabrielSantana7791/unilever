@@ -1,12 +1,13 @@
 package com.unilever.request.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
-import com.unilever.request.etc.Machine;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class MaterialEntity {
@@ -15,18 +16,23 @@ public class MaterialEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	
-	
+	@ManyToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name="ucx_id")
+	private UcxEntity ucxEntity;
 	
 	private String name, unName, cod, ucxCod;
 	private float unPerBox, unTotal;
 	
-	public MaterialEntity(String name, String unName, String cod, String ucxCod, float unPerBox, float unTotal){
+	public MaterialEntity(UcxEntity ucxEntity, String name, String unName, String ucxCod, float unPerBox, float unTotal){
 		this.name = name;
 		this.unName = unName;
 		this.cod = cod;
-		this.ucxCod = ucxCod;
 		this.unPerBox = unPerBox;
 		this.unTotal = unTotal;
+	}
+	
+	public MaterialEntity(){
+		
 	}
 	
 	public String getName() {
@@ -47,12 +53,7 @@ public class MaterialEntity {
 	public void setCod(String cod) {
 		this.cod = cod;
 	}
-	public String getUcxCod() {
-		return ucxCod;
-	}
-	public void setUcxCod(String ucxCod) {
-		this.ucxCod = ucxCod;
-	}
+	
 	public float getUnPerBox() {
 		return unPerBox;
 	}
@@ -75,6 +76,26 @@ public class MaterialEntity {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public UcxEntity getUcxEntity() {
+		return ucxEntity;
+	}
+
+	public void setUcxEntity(UcxEntity ucxEntity) {
+		this.ucxEntity = ucxEntity;
+	}
+
+	public int getUcxCod() {
+		return ucxEntity.getUcxId();
+	}
+
+	public void setUcxCod(String ucxCod) {
+		this.ucxCod = ucxCod;
+	}
+
+	
+
+	
 	
 	
 	

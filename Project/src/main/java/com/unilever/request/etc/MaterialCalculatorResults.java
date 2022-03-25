@@ -76,8 +76,8 @@ public class MaterialCalculatorResults {
 		this.cod = cod;
 	}
 
-	public String getUcxCod() {
-		return material.getUcxCod();
+	public int getUcxCod() {
+		return material.getUcxEntity().getUcxId();
 	}
 
 	public void setUcxCod(String ucxCod) {
@@ -88,7 +88,7 @@ public class MaterialCalculatorResults {
 	public String toString() {
 		return "Existe uma demanda de: " + demand + " " + material.getName() + " Será necessário: " + needMaterialUn + " Pallets" + " ou " +
 	needBox + " caixas...." + "Sobrará: " + unBoxRest + " caixas ou " + unTotalRest + " unidades." + " O código do material é: " + material.getCod() +
-	" e o UCX é: " + material.getUcxCod();
+	" e o UCX é: " + material.getUcxEntity().getUcxId();
 //		return "MaterialCalculatorResults [needMaterialUn=" + needMaterialUn + ", needUn=" + needUn + ", needBox="
 //				+ needBox + ", unBoxRest=" + unBoxRest + "]";
 	}
