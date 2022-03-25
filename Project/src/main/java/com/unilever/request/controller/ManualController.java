@@ -17,7 +17,7 @@ import com.unilever.request.repository.MaterialRepository;
 import com.unilever.request.repository.UcxRepository;
 
 @Controller
-public class manualController {
+public class ManualController {
 	@Autowired
 	MaterialCalculator calculator;
 	

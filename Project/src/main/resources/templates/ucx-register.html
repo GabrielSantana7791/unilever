@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
+
+<title>Unilever</title>
+</head>
+<body>
+	<div class="container" id="">
+		<div class="row justify-content-center">
+			<div class="col-md-6 justify-content-center ">
+				<img src="images/logo.png" alt="logo" class="img-fluid">
+				<div class="bg-light">
+					<div class="h3">cadastro de ucx.</div>
+					<br>
+					<form action="/ucx-register" method="post">
+						<div class="form-group col-md-4">
+							<label for="inputState">Código de produção (ucx)</label> 
+							<input type="number" name="ucxCod" class="form-control" min="0" step="1"/>
+						</div>
+
+
+						<label for="formGroupExampleInput">Descrição</label> 
+						<input type="text" name="name" class="form-control"/>
+						<button class="btn btn-primary" type="submit">Cadastrar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="css/bootstrap.js"></script>
+</body>
+</html>

@@ -16,19 +16,20 @@ public class MaterialEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	
-	@ManyToOne(cascade= CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="ucx_id")
 	private UcxEntity ucxEntity;
 	
 	private String name, unName, cod, ucxCod;
 	private float unPerBox, unTotal;
 	
-	public MaterialEntity(UcxEntity ucxEntity, String name, String unName, String ucxCod, float unPerBox, float unTotal){
+	public MaterialEntity(UcxEntity ucxEntity, String name, String unName, String ucxCod, float unPerBox, float unTotal, String cod){
 		this.name = name;
 		this.unName = unName;
 		this.cod = cod;
 		this.unPerBox = unPerBox;
 		this.unTotal = unTotal;
+		this.ucxEntity = ucxEntity;
 	}
 	
 	public MaterialEntity(){
