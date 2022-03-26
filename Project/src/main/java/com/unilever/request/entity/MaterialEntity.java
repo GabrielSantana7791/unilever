@@ -14,7 +14,7 @@ public class MaterialEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
+	private int id;
 	
 	@ManyToOne
 	@JoinColumn(name="ucx_id")
@@ -22,6 +22,7 @@ public class MaterialEntity {
 	
 	private String name, unName, cod, ucxCod;
 	private float unPerBox, unTotal;
+	private Boolean multiple;
 	
 	public MaterialEntity(UcxEntity ucxEntity, String name, String unName, String ucxCod, float unPerBox, float unTotal, String cod){
 		this.name = name;
@@ -92,6 +93,14 @@ public class MaterialEntity {
 
 	public void setUcxCod(String ucxCod) {
 		this.ucxCod = ucxCod;
+	}
+
+	public Boolean getMultiple() {
+		return multiple;
+	}
+
+	public void setMultiple(Boolean multiple) {
+		this.multiple = multiple;
 	}
 
 	

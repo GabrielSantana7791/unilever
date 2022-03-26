@@ -9,7 +9,7 @@ public class IndexController {
 	@GetMapping(value= "/")
 	public String a() {
 		
-		return "ucx-register";
+		return "index";
 	}
 
 

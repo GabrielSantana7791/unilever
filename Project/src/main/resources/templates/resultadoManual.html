@@ -10,7 +10,7 @@
 	<div class="container" id="">
 		<div class="row justify-content-center">
 			<div class="col-md-6 justify-content-center">
-				<img src="images/logo.png" alt="logo" class="img-fluid">
+				<a href="/"><img src="images/logo.png" alt="logo" class="img-fluid"></a>
 				<div class="h3">Seleção manual.</div>
 				<br>
 
@@ -22,9 +22,10 @@
 							<th scope="col">Material</th>
 							<th scope="col">Cod material</th>
 							<th scope="col">Quantidade mat a pedir</th>
-							<th scope="col">Pallet necessário</th>
-							<th scope="col">Caixas necessárias</th>
-							<th scope="col">Caixas a sobrar</th>
+							<th scope="col">Quantidade por pallet</th>
+							<th scope="col">Pallet a pedir</th>
+							<th scope="col">Caixas a pedir</th>
+							<th scope="col">Caixas a sobrar (Unidades quando não envolvido por caixas)</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,6 +35,7 @@
 							<td th:text='${material.name}'></td>
 							<td th:text='${material.cod}'></td>
 							<td th:text='${material.needUn}'></td>
+							<td th:text='${material.material.unTotal}'></td>
 							<td th:text='${material.needMaterialUn}'></td>
 							<td th:text='${material.needBox}'></td>
 							<td th:text='${material.unBoxRest}'></td>

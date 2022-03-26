@@ -10,21 +10,21 @@
 	<div class="container" id="">
 		<div class="row justify-content-center">
 			<div class="col-md-6 justify-content-center ">
-				<img src="images/logo.png" alt="logo" class="img-fluid">
+				<a href="/"><img src="images/logo.png" alt="logo" class="img-fluid"></a>
 				<div class="bg-light">
 					<div class="h3">Seleção manual.</div>
 					<br>
 					<form action="/calculate" method="get">
 						<div class="form-group col-md-4">
 							<label for="inputState">Código da produção</label> <input type="text"
-								name="ucxCode" class="form-control" />
+								name="ucxCode" class="form-control" required="required"/>
 						</div>
 
 
 						<label for="formGroupExampleInput">Expectativa de produção
 							do turno</label> <input type="number" name="typeNumber"
-							class="form-control" step="any" />
-						<button class="btn btn-primary" type="submit">Enviar</button>
+							class="form-control" step="any" required="required"/>
+						<button class="btn btn-primary" type="submit">Consultar</button>
 					</form>
 				</div>
 			</div>

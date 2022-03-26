@@ -52,6 +52,14 @@ public class MaterialCalculatorResults {
 	
 	
 
+	public MaterialEntity getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(MaterialEntity material) {
+		this.material = material;
+	}
+
 	public String getName() {
 		return material.getName();
 	}

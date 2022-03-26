@@ -15,6 +15,7 @@ public class UcxEntity {
 	int ucxId;
 	
 	String name;
+	float unPerBox;
 	
 	
 	@OneToMany(cascade= CascadeType.ALL)
@@ -45,6 +46,14 @@ public class UcxEntity {
 
 	public void setMaterialEntity(List<MaterialEntity> materialEntity) {
 		this.materialEntity = materialEntity;
+	}
+
+	public float getUnPerBox() {
+		return unPerBox;
+	}
+
+	public void setUnPerBox(int unPerBox) {
+		this.unPerBox = unPerBox;
 	}
 	
 	
