@@ -30,12 +30,12 @@ public class ManualController {
 	UcxRepository ucxRep;
 	
 	@GetMapping(value= "/calculate")
-	public String AboutMe(Model model, float typeNumber, String ucxCode) {	
+	public String AboutMe(Model model, float utp, String ucxCode) {	
 		
 		List<MaterialCalculatorResults> resultList = new ArrayList<>();		
 		
 		for (MaterialEntity materialEntity : materialRep.findByUcxEntity(ucxRep.findByUcxId(Integer.valueOf(ucxCode)))) {
-			MaterialCalculatorResults result =  calculator.materialPerTurn(materialEntity, typeNumber);
+			MaterialCalculatorResults result =  calculator.materialPerTurn(materialEntity, utp);
 			resultList.add(result);
 		}
 		

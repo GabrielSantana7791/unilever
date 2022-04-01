@@ -13,12 +13,12 @@
 				<a href="/"><img src="images/logo.png" alt="logo" class="img-fluid"></a>
 				<div class="h3">Seleção manual.</div>
 				<br>
-
+				<div> <mark th:text='${"Previsão para produção de  " + param.utp + " caixas."}'></mark> </div>
 
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">Cod produção</th>
+							<th scope="col">SKU</th>
 							<th scope="col">Material</th>
 							<th scope="col">Cod material</th>
 							<th scope="col">Quantidade mat a pedir</th>
@@ -34,7 +34,7 @@
 							<td th:text='${material.ucxCod}'></td>
 							<td th:text='${material.name}'></td>
 							<td th:text='${material.cod}'></td>
-							<td th:text='${material.needUn}'></td>
+							<td th:text='${material.needUn + " (" + material.unName + ")"}'></td>
 							<td th:text='${material.material.unTotal}'></td>
 							<td th:text='${material.needMaterialUn}'></td>
 							<td th:text='${material.needBox}'></td>
