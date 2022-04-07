@@ -49,8 +49,8 @@ public class MaterialCalculator {
 				i += material.getUnTotal() /( material.getWeightToProduceOne() / material.getUcxEntity().getUnPerBox());
 				needUn = i;
 
-				//
-				needBox = (needMaterialUn *(material.getUnTotal() / material.getUnPerBox()));
+				//	needBox = needUn / material.getUnPerBox();
+				needBox = (float) Math.ceil(needMaterialUn *(material.getUnTotal() / material.getUnPerBox()));
 
 			}
 
@@ -61,12 +61,8 @@ public class MaterialCalculator {
 
 			}
 
-			//			if(material.getMultiple() >= 1) {
-			//				unBoxRest = unTotalRest;
-			//				needBox = 0;
-			//			}
-
-			MaterialCalculatorResults result1 = new MaterialCalculatorResults(material, needMaterialUn, needUn, needBox, unBoxRest, unTotalRest, toProduceMaterial);
+			MaterialCalculatorResults result1 = new MaterialCalculatorResults(material, needMaterialUn, needUn, 
+					needBox, unBoxRest, unTotalRest, toProduceMaterial);
 
 			return result1;
 
@@ -75,8 +71,4 @@ public class MaterialCalculator {
 
 		}
 	}
-
-
-
-
 }

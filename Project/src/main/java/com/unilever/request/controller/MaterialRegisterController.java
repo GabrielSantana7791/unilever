@@ -37,8 +37,17 @@ public class MaterialRegisterController {
 	public String materialRegister(String name, String unName, int ucxCod, float unPerBox, float unTotal, String cod) {
 		UcxEntity ucxEntity = ucxRep.findByUcxId(ucxCod);
 		
-		MaterialEntity material = new MaterialEntity(ucxEntity, name, unName, String.valueOf(ucxCod), unPerBox, unTotal, cod, null);
+		MaterialEntity material = new MaterialEntity();
+		material.setName(name);
+		material.setUnName(unName);
+		material.setCod(cod);
+		material.setUcxEntity(ucxEntity);
+		material.setUnPerBox(unPerBox);
+		material.setUnTotal(unTotal);
+		material.setMultiple(true);
+		material.setBox(true);
 		
+		//(UcxEntity ucxEntity, String name, String unName, String ucxCod, float unTotal, float unPerBox, String cod, Boolean box) {
 		materialRep.save(material);
 		materialRep.flush();
 		
