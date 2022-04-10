@@ -35,9 +35,13 @@ public class MaterialCalculator {
 				unBoxRest = (float) Math.ceil(unTotalRest);
 				needBox = needUn;
 			}
-
+			
 			MaterialCalculatorResults result = new MaterialCalculatorResults(material, needMaterialUn, needUn,
 					needBox, unBoxRest, unTotalRest, toProduceMaterial);
+			
+			result.setUnBox(material.getUnTotal() / material.getUnPerBox());
+			
+			System.out.println(material.getUnTotal() / material.getUnPerBox());
 			
 			return result;
 

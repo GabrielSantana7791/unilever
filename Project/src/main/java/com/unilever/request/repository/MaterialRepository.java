@@ -11,5 +11,6 @@ public interface MaterialRepository extends JpaRepository<MaterialEntity, Long>{
 
 	//MaterialEntity[] findByUcxCod(String ucxCod);
 	List<MaterialEntity> findByUcxEntity(UcxEntity ucxEntity);
+	MaterialEntity findById(int id);
 
 }

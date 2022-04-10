@@ -3,18 +3,26 @@ package com.unilever.request.etc;
 import com.unilever.request.entity.MaterialEntity;
 
 public class MaterialCalculatorResults {
-	private float needMaterialUn, needUn, needBox, unBoxRest, unTotalRest, demand;
-	private MaterialEntity material;
-	private String name, unName, cod, ucxCod;
+	private float needMaterialUn, needUn, needBox, unBoxRest, unTotalRest, demand, unTotal, unBox;
+	private Boolean box;
+
+	private String name, unName, cod;
+	int ucxCod;
 	
-	MaterialCalculatorResults(MaterialEntity material, float needMaterialUn, float needUn, float needBox, float unBoxRest, float unTotalRest, float demand){
+	public MaterialCalculatorResults(MaterialEntity material, float needMaterialUn, float needUn, float needBox, float unBoxRest, float unTotalRest, float demand){
 		this.needMaterialUn = needMaterialUn;
 		this.needUn = needUn;
 		this.needBox = needBox;
 		this.unBoxRest = unBoxRest;
-		this.material = material;
-		this.demand = demand;
-		this.unTotalRest = unTotalRest;
+		this.setDemand(demand);
+		this.setUnTotalRest(unTotalRest);
+		
+		this.name = material.getName();
+		this.unName = material.getUnName();
+		this.ucxCod = material.getUcxCod();
+		this.cod = material.getCod();
+		this.setUnTotal(material.getUnTotal());
+		this.box = material.getBox();
 		
 	}
 
@@ -52,16 +60,8 @@ public class MaterialCalculatorResults {
 	
 	
 
-	public MaterialEntity getMaterial() {
-		return material;
-	}
-
-	public void setMaterial(MaterialEntity material) {
-		this.material = material;
-	}
-
 	public String getName() {
-		return material.getName();
+		return name;
 	}
 
 	public void setName(String name) {
@@ -69,7 +69,7 @@ public class MaterialCalculatorResults {
 	}
 
 	public String getUnName() {
-		return material.getUnName();
+		return unName;
 	}
 
 	public void setUnName(String unName) {
@@ -77,7 +77,7 @@ public class MaterialCalculatorResults {
 	}
 
 	public String getCod() {
-		return material.getCod();
+		return cod;
 	}
 
 	public void setCod(String cod) {
@@ -85,22 +85,64 @@ public class MaterialCalculatorResults {
 	}
 
 	public int getUcxCod() {
-		return material.getUcxEntity().getUcxId();
+		return ucxCod;
 	}
 
-	public void setUcxCod(String ucxCod) {
+	public void setUcxCod(int ucxCod) {
 		this.ucxCod = ucxCod;
 	}
 
-	@Override
-	public String toString() {
-		return "Existe uma demanda de: " + demand + " " + material.getName() + " Será necessário: " + needMaterialUn + " Pallets" + " ou " +
-	needBox + " caixas...." + "Sobrará: " + unBoxRest + " caixas ou " + unTotalRest + " unidades." + " O código do material é: " + material.getCod() +
-	" e o UCX é: " + material.getUcxEntity().getUcxId();
-//		return "MaterialCalculatorResults [needMaterialUn=" + needMaterialUn + ", needUn=" + needUn + ", needBox="
-//				+ needBox + ", unBoxRest=" + unBoxRest + "]";
+	public float getDemand() {
+		return demand;
+	}
+
+	public void setDemand(float demand) {
+		this.demand = demand;
+	}
+
+	public float getUnTotal() {
+		return unTotal;
+	}
+
+	public void setUnTotal(float unTotal) {
+		this.unTotal = unTotal;
+	}
+
+	public float getUnTotalRest() {
+		return unTotalRest;
+	}
+
+	public void setUnTotalRest(float unTotalRest) {
+		this.unTotalRest = unTotalRest;
 	}
 	
+	public float getUnBox() {
+		return unBox;
+	}
+
+	public void setUnBox(float unBox) {
+		this.unBox = unBox;
+	}
+
+	public Boolean getBox() {
+		return box;
+	}
+
+	public void setBox(Boolean box) {
+		this.box = box;
+	}
+
+	
+	
+//	@Override
+//	public String toString() {
+//		return "Existe uma demanda de: " + demand + " " + material.getName() + " Será necessário: " + needMaterialUn + " Pallets" + " ou " +
+//	needBox + " caixas...." + "Sobrará: " + unBoxRest + " caixas ou " + unTotalRest + " unidades." + " O código do material é: " + material.getCod() +
+//	" e o UCX é: " + material.getUcxEntity().getUcxId();
+////		return "MaterialCalculatorResults [needMaterialUn=" + needMaterialUn + ", needUn=" + needUn + ", needBox="
+////				+ needBox + ", unBoxRest=" + unBoxRest + "]";
+//	}
+//	
 	
 
 }
