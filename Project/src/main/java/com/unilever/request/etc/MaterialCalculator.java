@@ -30,7 +30,7 @@ public class MaterialCalculator {
 			if(needUn > toProduceMaterial && material.getBox() == true) {
 				unBoxRest = (float) Math.ceil((needUn - toProduceMaterial) / material.getUnPerBox());
 				unTotalRest = (float) Math.ceil(needUn - toProduceMaterial);
-			}else {
+			}else if(needUn >= toProduceMaterial && material.getBox() == false){
 				unTotalRest = (float) Math.ceil(needUn - toProduceMaterial);
 				unBoxRest = (float) Math.ceil(unTotalRest);
 				needBox = needUn;
@@ -39,10 +39,8 @@ public class MaterialCalculator {
 			MaterialCalculatorResults result = new MaterialCalculatorResults(material, needMaterialUn, needUn,
 					needBox, unBoxRest, unTotalRest, toProduceMaterial);
 			
-			result.setUnBox(material.getUnTotal() / material.getUnPerBox());
-			
-			System.out.println(material.getUnTotal() / material.getUnPerBox());
-			
+			result.setUnBox((material.getUnTotal() / material.getUnPerBox()));
+						
 			return result;
 
 		case "KG":

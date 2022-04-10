@@ -10,10 +10,14 @@
 	<div class="container" id="">
 		<div class="row justify-content-center">
 			<div class="col-auto justify-content-center">
-				<a href="/"><img src="images/logo.png" alt="logo" class="img-fluid"></a>
+				<a href="/"><img src="images/logo.png" alt="logo"
+					class="img-fluid"></a>
 				<div class="h3">Seleção manual.</div>
 				<br>
-				<div> <mark th:text='${"Previsão para produção de  " + param.utp + " caixas."}'></mark> </div>
+				<div>
+					<mark
+						th:text='${"Previsão para produção de  " + param.utp + " caixas."}'></mark>
+				</div>
 
 				<table class="table">
 					<thead>
@@ -25,51 +29,28 @@
 							<th scope="col">Quantidade por pallet</th>
 							<th scope="col">Pallet a pedir</th>
 							<th scope="col">Caixas a pedir</th>
-<!-- 							<th scope="col">Caixas a sobrar (Unidades quando não envolvido por caixas)</th> -->
+							<!-- 							<th scope="col">Caixas a sobrar (Unidades quando não envolvido por caixas)</th> -->
 						</tr>
 					</thead>
 					<tbody>
 						<div th:each="material: ${resultList}">
-						<tr>
-							<td th:text='${material.ucxCod}'></td>
-							<td th:text='${material.name}'></td>
-							<td th:text='${material.cod}'></td>
-							<td th:id="${material.cod + 'needMaterialUn'}" th:text='${material.needUn + " (" + material.unName + ")"}'></td>
-							<td th:text='${material.unTotal}'></td>
-<!-- 							<td th:text='testando'></td> -->
-							<td><input th:id="${material.cod + 'unMaterial'}" class="form-control" th:value='${material.needMaterialUn}'
-							th:attr="onchange=|
-							
-							if(${material.box} === true){
-							
-							document.getElementById('${material.cod + 'needMaterialUn'}').innerHTML = (this.value * ${material.unTotal})
-							document.getElementById('${material.cod + 'needBox'}').value = (this.value * ${material.unBox})
-							
-							}else{
-							document.getElementById('${material.cod + 'needMaterialUn'}').innerHTML = (this.value * ${material.unTotal})
-							document.getElementById('${material.cod + 'needBox'}').value = (this.value * ${material.unTotal})
-							
-							}
-							
-							
-						
-								|" ></td>
-							<td ><input th:id="${material.cod + 'needBox'}" class="form-control" th:value='${material.needBox}' 	th:attr="onchange=|
-							if(${material.box} === true){
-							
-							document.getElementById('${material.cod + 'unMaterial'}').value = Math.ceil((this.value / ${material.unBox}))
-							document.getElementById('${material.cod + 'needMaterialUn'}').innerHTML = (document.getElementById('${material.cod + 'unMaterial'}').value) * ${material.unTotal}
-						
-							}else{
-							
-							document.getElementById('${material.cod + 'unMaterial'}').value = Math.ceil((this.value / ${material.unTotal}))
-							document.getElementById('${material.cod + 'needMaterialUn'}').innerHTML = (	document.getElementById('${material.cod + 'unMaterial'}').value * ${material.unTotal})
-						
-							}
-					
-								|"  ></td>
-<!-- 							<td th:text='${material.unBoxRest}'></td> -->
-						</tr>
+							<tr>
+								<td th:text='${material.ucxCod}'></td>
+								<td th:text='${material.name}'></td>
+								<td th:text='${material.cod}'></td>
+								<td th:id="${material.cod + 'needMaterialUn'}"
+									th:text='${material.needUn + " (" + material.unName + ")"}'></td>
+								<td th:text='${material.unTotal}'></td>
+								<!-- 							<td th:text='testando'></td> -->
+								<td><input th:id="${material.cod + 'unMaterial'}"
+									class="form-control" th:value='${material.needMaterialUn}'
+									th:attr="onchange=|unMaterial(${material.cod}, '${material.unName}', ${material.unTotal}, ${material.unBox}, ${material.box})|"></td>
+<!-- 									${material.cod, material.unTotal, material.unBox, material.box} -->
+								<td><input th:id="${material.cod + 'needBox'}"
+									class="form-control" th:value='${material.needBox}'
+									th:attr="onchange=|needBox(${material.cod}, '${material.unName}', ${material.unTotal}, ${material.unBox}, ${material.box})|"></td>
+								<!-- 							<td th:text='${material.unBoxRest}'></td> -->
+							</tr>
 
 
 						</div>
@@ -85,5 +66,6 @@
 
 
 	<script src="css/bootstrap.js"></script>
+	<script src="js/update.js"></script>
 </body>
 </html>
