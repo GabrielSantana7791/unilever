@@ -31,7 +31,7 @@ public class ManualController {
 	
 	@GetMapping(value= "/calculate")
 	public String AboutMe(Model model, float utp, String ucxCode) {	
-		
+		System.out.println(ucxCode);
 		List<MaterialCalculatorResults> resultList = new ArrayList<>();		
 		
 		for (MaterialEntity materialEntity : materialRep.findByUcxEntity(ucxRep.findByUcxId(Integer.valueOf(ucxCode)))) {
@@ -45,23 +45,11 @@ public class ManualController {
 	}
 	
 	@GetMapping(value= "/manual")
-	public String tasd() {
+	public String tasd(Model model) {
+		List<UcxEntity> ucxList = ucxRep.findAll();
+		model.addAttribute("ucxList", ucxList);
+		
 		return "manual";
 	}
-	
-//	@GetMapping(value= "/teste")
-//	public String tdasd(String ucxCode, Model model) {
-//		System.out.println("_____" + ucxCode);
-//		return "manual";
-//	}
-//	
-//	@GetMapping("/enc")
-//    public RedirectView redirectWithUsingRedirectView(
-//      RedirectAttributes attributes, String ucxCode, String typeNumber) {
-//		System.out.println("teste" );
-//        attributes.addAttribute("ucxCode", ucxCode);
-//        attributes.addAttribute("ucxCode", ucxCode);
-//        return new RedirectView("teste");
-//    }
 
 }
