@@ -31,7 +31,6 @@ public class ManualController {
 	
 	@GetMapping(value= "/calculate")
 	public String AboutMe(Model model, float utp, String ucxCode) {	
-		System.out.println(ucxCode);
 		List<MaterialCalculatorResults> resultList = new ArrayList<>();		
 		
 		for (MaterialEntity materialEntity : materialRep.findByUcxEntity(ucxRep.findByUcxId(Integer.valueOf(ucxCode)))) {
