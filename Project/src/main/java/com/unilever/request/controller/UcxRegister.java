@@ -21,10 +21,11 @@ public class UcxRegister {
 	}
 	
 	@PostMapping(value= "/ucx-register")
-	public String register(int ucxCod, String name) {
+	public String register(int ucxCod, String name, int unPerBox) {
 		UcxEntity ucx = new UcxEntity();
 		ucx.setUcxId(ucxCod);
 		ucx.setName(name);
+		ucx.setUnPerBox(unPerBox);
 		
 		ucxRep.save(ucx);
 		ucxRep.flush();

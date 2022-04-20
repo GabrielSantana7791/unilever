@@ -3,3 +3,11 @@
 #coco{
 	align-content: center;
 }
+
+div{
+	padding: 8px;
+}
+
+.navbar-brand{
+	padding-left: 15px;
+}

@@ -11,6 +11,12 @@ public class IndexController {
 		
 		return "index";
 	}
+	
+	@GetMapping(value= "/index")
+	public String b() {
+		
+		return "index";
+	}
 
 
 }

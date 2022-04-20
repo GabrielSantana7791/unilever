@@ -43,12 +43,12 @@ public class MaterialCalculator {
 						
 			return result;
 
-		case "KG":
-
-			for(float i = 0; i < toProduceMaterial;) {
+		case "kg":
+			float toProduceMaterialWeight = material.getWeightToProduceOne() * material.getUcxEntity().getUnPerBox() * toProduceMaterial;
+			for(float i = 0; i < toProduceMaterialWeight;) {
 
 				needMaterialUn ++;
-				i += material.getUnTotal() /( material.getWeightToProduceOne() / material.getUcxEntity().getUnPerBox());
+				i += material.getUnTotal();
 				needUn = i;
 
 				//	needBox = needUn / material.getUnPerBox();
