@@ -7,10 +7,9 @@ import com.unilever.request.entity.MaterialEntity;
 @Service
 public class MaterialCalculator {
 
-
 	public MaterialCalculatorResults materialPerTurn(MaterialEntity material, float toProduceMaterial) {
 		float needMaterialUn = 0, needUn = 0, needBox = 0, unBoxRest = 0, unTotalRest = 0;
-		
+
 		if(material.getMultiple() == true) {
 			toProduceMaterial *= material.getUcxEntity().getUnPerBox();
 		}
@@ -35,12 +34,12 @@ public class MaterialCalculator {
 				unBoxRest = (float) Math.ceil(unTotalRest);
 				needBox = needUn;
 			}
-			
+
 			MaterialCalculatorResults result = new MaterialCalculatorResults(material, needMaterialUn, needUn,
 					needBox, unBoxRest, unTotalRest, toProduceMaterial);
-			
+
 			result.setUnBox((material.getUnTotal() / material.getUnPerBox()));
-						
+
 			return result;
 
 		case "kg":
@@ -51,7 +50,6 @@ public class MaterialCalculator {
 				i += material.getUnTotal();
 				needUn = i;
 
-				//	needBox = needUn / material.getUnPerBox();
 				needBox = (float) Math.ceil(needMaterialUn *(material.getUnTotal() / material.getUnPerBox()));
 
 			}

@@ -7,7 +7,7 @@ public class MaterialCalculatorResults {
 	private Boolean box;
 
 	private String name, unName, cod;
-	int ucxCod;
+	private int ucxCod;
 	
 	public MaterialCalculatorResults(MaterialEntity material, float needMaterialUn, float needUn, float needBox, float unBoxRest, float unTotalRest, float demand){
 		this.needMaterialUn = needMaterialUn;
@@ -21,7 +21,7 @@ public class MaterialCalculatorResults {
 		this.unName = material.getUnName();
 		this.ucxCod = material.getUcxCod();
 		this.cod = material.getCod();
-		this.setUnTotal(material.getUnTotal());
+		this.unTotal = material.getUnTotal();
 		this.box = material.getBox();
 		
 	}
@@ -57,8 +57,6 @@ public class MaterialCalculatorResults {
 	public void setUnBoxRest(float unBoxRest) {
 		this.unBoxRest = unBoxRest;
 	}
-	
-	
 
 	public String getName() {
 		return name;
@@ -131,18 +129,5 @@ public class MaterialCalculatorResults {
 	public void setBox(Boolean box) {
 		this.box = box;
 	}
-
-	
-	
-//	@Override
-//	public String toString() {
-//		return "Existe uma demanda de: " + demand + " " + material.getName() + " Será necessário: " + needMaterialUn + " Pallets" + " ou " +
-//	needBox + " caixas...." + "Sobrará: " + unBoxRest + " caixas ou " + unTotalRest + " unidades." + " O código do material é: " + material.getCod() +
-//	" e o UCX é: " + material.getUcxEntity().getUcxId();
-////		return "MaterialCalculatorResults [needMaterialUn=" + needMaterialUn + ", needUn=" + needUn + ", needBox="
-////				+ needBox + ", unBoxRest=" + unBoxRest + "]";
-//	}
-//	
-	
 
 }

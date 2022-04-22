@@ -9,7 +9,6 @@ import com.unilever.request.entity.UcxEntity;
 
 public interface MaterialRepository extends JpaRepository<MaterialEntity, Long>{
 
-	//MaterialEntity[] findByUcxCod(String ucxCod);
 	List<MaterialEntity> findByUcxEntity(UcxEntity ucxEntity);
 	MaterialEntity findById(int id);
 

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -13,16 +12,14 @@ import javax.persistence.OneToMany;
 public class UcxEntity {
 	
 	@Id
-	int ucxId;
+	private int ucxId;
 	
-	String name;
-	float unPerBox;
-	
+	private String name;
+	private float unPerBox;
 	
 	@OneToMany(cascade= CascadeType.ALL)
 	@JoinColumn(name="ucx_id")
 	private List<MaterialEntity> materialEntity;
-
 	
 
 	public int getUcxId() {

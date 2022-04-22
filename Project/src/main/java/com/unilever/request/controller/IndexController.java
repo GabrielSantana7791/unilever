@@ -1,4 +1,4 @@
-package com.unilever.request.entity;
+package com.unilever.request.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,16 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 	
 	@GetMapping(value= "/")
-	public String a() {
+	public String index() {
 		
 		return "index";
 	}
 	
 	@GetMapping(value= "/index")
-	public String b() {
+	public String indexEmpty() {
 		
 		return "index";
 	}
-
-
 }

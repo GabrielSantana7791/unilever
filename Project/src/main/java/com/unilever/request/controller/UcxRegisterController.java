@@ -9,19 +9,19 @@ import com.unilever.request.entity.UcxEntity;
 import com.unilever.request.repository.UcxRepository;
 
 @Controller
-public class UcxRegister {
+public class UcxRegisterController {
 	
 	@Autowired
 	private UcxRepository ucxRep;
 	
 	@GetMapping(value= "/ucx-register")
-	public String register() {
+	public String ucxRegister() {
 		
 		return "ucx-register";
 	}
 	
 	@PostMapping(value= "/ucx-register")
-	public String register(int ucxCod, String name, int unPerBox) {
+	public String ucxRegister(int ucxCod, String name, int unPerBox) {
 		UcxEntity ucx = new UcxEntity();
 		ucx.setUcxId(ucxCod);
 		ucx.setName(name);

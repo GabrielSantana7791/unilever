@@ -1,6 +1,5 @@
 package com.unilever.request.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,18 +35,11 @@ public class MaterialRegisterController {
 	
 	@PostMapping(value= "/material-register")
 	public String materialRegister(String name, String unName, int ucxCod,  @RequestParam(defaultValue = "0") float unPerBox,
-			float unTotal, @RequestParam(defaultValue = "0")  float weightToProduceOne, String cod, Boolean box,@RequestParam(defaultValue = "0") Boolean multiple) {
+		float unTotal, @RequestParam(defaultValue = "0")  float weightToProduceOne, String cod, @RequestParam(defaultValue = "0") Boolean box,@RequestParam(defaultValue = "0") Boolean multiple) {
 		
-		if(multiple == null) {
-			multiple = false;
-		}
-		if(box == null) {
-			box = false;
-		}
 		if(unPerBox == 0) {
 			unPerBox = unTotal;
 		}
-		
 		
 		UcxEntity ucxEntity = ucxRep.findByUcxId(ucxCod);
 		
@@ -62,9 +54,6 @@ public class MaterialRegisterController {
 		material.setBox(box);		
 		material.setWeightToProduceOne(weightToProduceOne);
 		
-		
-		
-		//(UcxEntity ucxEntity, String name, String unName, String ucxCod, float unTotal, float unPerBox, String cod, Boolean box) {
 		materialRep.save(material);
 		materialRep.flush();
 		
