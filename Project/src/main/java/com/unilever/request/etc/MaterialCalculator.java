@@ -9,11 +9,12 @@ public class MaterialCalculator {
 
 	public MaterialCalculatorResults materialPerTurn(MaterialEntity material, float toProduceMaterial) {
 		float needMaterialUn = 0, needUn = 0, needBox = 0, unBoxRest = 0, unTotalRest = 0;
+		
 
 		if(material.getMultiple() == true) {
-			toProduceMaterial *= material.getUcxEntity().getUnPerBox();
+			toProduceMaterial *= material.getUcxEntity().getUnPerBox();			
 		}
-
+		
 		switch (material.getUnName()) {
 		case "un":
 
@@ -60,9 +61,14 @@ public class MaterialCalculator {
 				unTotalRest = 0;
 
 			}
+			
+			toProduceMaterial = toProduceMaterial * material.getUcxEntity().getUnPerBox() * material.getWeightToProduceOne();
 
 			MaterialCalculatorResults result1 = new MaterialCalculatorResults(material, needMaterialUn, needUn, 
 					needBox, unBoxRest, unTotalRest, toProduceMaterial);
+			
+			//adicionar unBox no metodo construtor!!!!!!!!!!!!!!!!!!!!!!!!kk
+			result1.setUnBox((material.getUnTotal() / material.getUnPerBox()));
 
 			return result1;
 

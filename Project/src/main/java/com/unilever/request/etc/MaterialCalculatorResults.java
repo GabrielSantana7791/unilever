@@ -3,7 +3,7 @@ package com.unilever.request.etc;
 import com.unilever.request.entity.MaterialEntity;
 
 public class MaterialCalculatorResults {
-	private float needMaterialUn, needUn, needBox, unBoxRest, unTotalRest, demand, unTotal, unBox;
+	private float needMaterialUn, needUn, needBox, unBoxRest, unTotalRest, demand, unTotal, unBox, toProduceMaterial;
 	private Boolean box;
 
 	private String name, unName, cod;
@@ -128,6 +128,14 @@ public class MaterialCalculatorResults {
 
 	public void setBox(Boolean box) {
 		this.box = box;
+	}
+
+	public float getToProduceMaterial() {
+		return toProduceMaterial;
+	}
+
+	public void setToProduceMaterial(float toProduceMaterial) {
+		this.toProduceMaterial = toProduceMaterial;
 	}
 
 }

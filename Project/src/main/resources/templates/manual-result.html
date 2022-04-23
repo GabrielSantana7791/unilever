@@ -29,9 +29,10 @@
 						<thead>
 							<tr>
 								<th scope="col">SKU</th>
-								<th scope="col">Material</th>
-								<th scope="col">Cod material</th>
-								<th scope="col">Quantidade mat a pedir</th>
+								<th scope="col">Descrição do material</th>
+								<th scope="col">Código do material</th>
+								<th scope="col">Quantidade requisitada</th>
+								<th scope="col">Quantidade mat. a pedir</th>
 								<th scope="col">Quantidade por pallet</th>
 								<th scope="col">Pallet a pedir</th>
 								<th scope="col">Caixas a pedir</th>
@@ -44,6 +45,7 @@
 									<td th:text='${material.ucxCod}'></td>
 									<td th:text='${material.name}'></td>
 									<td th:text='${material.cod}'></td>
+									<td th:text='${#numbers.formatInteger(material.demand, 1) + " (" + material.unName + ")"}' id ="esse"><mark></mark></td> 
 									<td th:id="${material.cod + 'needMaterialUn'}"
 										th:text='${#numbers.formatInteger(material.needUn, 1) + " (" + material.unName + ")"}'></td>
 									<td th:text='${#numbers.formatInteger(material.unTotal, 1)}'></td>
