@@ -31,12 +31,11 @@
 								<th scope="col">SKU</th>
 								<th scope="col">Descrição do material</th>
 								<th scope="col">Código do material</th>
+								<th scope="col">Pallet em estoque</th>
+								<th scope="col">Pallet a pedir</th>
 								<th scope="col">Quantidade requisitada</th>
 								<th scope="col">Quantidade mat. a pedir</th>
 								<th scope="col">Quantidade por pallet</th>
-								<th scope="col">Pallet a pedir</th>
-								<th scope="col">Caixas a pedir</th>
-								<!-- 							<th scope="col">Caixas a sobrar (Unidades quando não envolvido por caixas)</th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -45,21 +44,13 @@
 									<td th:text='${material.ucxCod}'></td>
 									<td th:text='${material.name}'></td>
 									<td th:text='${material.cod}'></td>
+									<td><input th:id='${material.cod + "ownMaterial"}' type="number" class="form-control" th:value='0' th:attr="onchange=|mudar(${material.cod}, '${material.unName}', ${material.unTotal}, ${material.needMaterialUn})|"></td>
+									<td th:id='${material.cod + "materialNeed"}' th:text="${#numbers.formatInteger(material.needMaterialUn, 1)}"></td>
 									<td th:text='${#numbers.formatInteger(material.demand, 1) + " (" + material.unName + ")"}' id ="esse"><mark></mark></td> 
 									<td th:id="${material.cod + 'needMaterialUn'}"
 										th:text='${#numbers.formatInteger(material.needUn, 1) + " (" + material.unName + ")"}'></td>
 									<td th:text='${#numbers.formatInteger(material.unTotal, 1)}'></td>
-									<!-- 							<td th:text='testando'></td> -->
-									<td><input th:id="${material.cod + 'unMaterial'}"
-										type="number" min="0" step="1" class="form-control"
-										th:value='${#numbers.formatInteger(material.needMaterialUn, 1)}'
-										th:attr="onchange=|unMaterial(${material.cod}, '${material.unName}', ${material.unTotal}, ${material.unBox}, ${material.box})|"></td>
-									<!-- 									${material.cod, material.unTotal, material.unBox, material.box} -->
-									<td><input th:id="${material.cod + 'needBox'}"
-										type="number" min="0" step="1" class="form-control"
-										th:value='${#numbers.formatInteger(material.needBox,1)}'
-										th:attr="onchange=|needBox(${material.cod}, '${material.unName}', ${material.unTotal}, ${material.unBox}, ${material.box})|"></td>
-									<!-- 							<td th:text='${material.unBoxRest}'></td> -->
+								
 								</tr>
 							</div>
 						</tbody>

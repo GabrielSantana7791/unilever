@@ -10,9 +10,17 @@
 <body>
 	<nav th:replace="~{fragment/navbar :: navBar}"></nav>
 	<div class="container">
+		<div th:if="${message}">
+			<div th:switch="${message.type}">
+				<div th:case="'success'" th:text="${message.msg}" class="alert alert-success" role="alert"></div>
+				<div th:case="'error'" th:text="${message.msg}" class="alert alert-danger" role="alert"></div>
+			</div>
+
+		</div>
+
 		<div class="row">
 			<div class="col-auto">
-				<h3>Cadastro de material</h3>
+				<h3 th:text="${mensagem}">Cadastro de material</h3>
 			</div>
 		</div>
 		<form action="/material-register" method="post" class="" id="form">

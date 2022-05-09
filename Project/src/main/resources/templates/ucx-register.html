@@ -10,6 +10,16 @@
 <body>
 	<nav th:replace="~{fragment/navbar :: navBar}"></nav>
 	<div class="container" id="">
+		<div th:if="${message}">
+			<div th:switch="${message.type}">
+				<div th:case="'success'" th:text="${message.msg}"
+					class="alert alert-success" role="alert"></div>
+				<div th:case="'error'" th:text="${message.msg}"
+					class="alert alert-danger" role="alert"></div>
+			</div>
+
+		</div>
+
 		<div class="row">
 			<div class="col-auto">
 				<div class="h3">cadastro de SKU.</div>
@@ -18,18 +28,21 @@
 			<form action="/ucx-register" method="post">
 				<div class="row">
 					<div class="col-auto">
-						<label for="inputState">Código</label> <input placeholder="Exemplo: 97815197"
-							type="number" name="ucxCod" class="form-control" min="0" step="1" />
+						<label for="inputState">Código</label> <input
+							placeholder="Exemplo: 97815197" type="number" name="ucxCod"
+							class="form-control" min="0" step="1" />
 					</div>
 					<div class="col-auto">
-						<label for="formGroupExampleInput">Descrição</label> <input placeholder="250G light verde"
-							type="text" name="name" class="form-control" />
+						<label for="formGroupExampleInput">Descrição</label> <input
+							placeholder="250G light verde" type="text" name="name"
+							class="form-control" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-auto">
-						<label for="formGroupExampleInput">Unidades por caixa</label> <input placeholder="Exemplo: 10"
-							type="number" name="unPerBox" class="form-control" min="0" step="1"/>
+						<label for="formGroupExampleInput">Unidades por caixa</label> <input
+							placeholder="Exemplo: 10" type="number" name="unPerBox"
+							class="form-control" min="0" step="1" />
 
 					</div>
 				</div>
