@@ -1,11 +1,11 @@
 @import url('bootstrap.css');
 
-#coco{
-	align-content: center;
-}
-
 div{
 	padding: 8px;
+}
+
+#login-form div{
+	padding: 4px;
 }
 
 .navbar-brand{
