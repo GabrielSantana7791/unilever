@@ -23,6 +23,7 @@
 					href="material-register">Cadastro material</a></li>
 				<li class="nav-item"><a class="nav-link text-white"
 					href="manual">Consulta</a></li>
+				<li th:if="${session.user}"><a class="nav-link text-white" href="/ucx-edit">Editar SKU</a></li>
 			</ul>
 
 			<ul class="navbar-nav ms-auto">

@@ -3,7 +3,10 @@ package com.unilever.request.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -12,13 +15,17 @@ import javax.persistence.OneToMany;
 public class UcxEntity {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name="_id")
+	private int id;
+	
 	private int ucxId;
 	
 	private String name;
 	private float unPerBox;
 	
 	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="ucx_id")
+	@JoinColumn(name="idd")
 	private List<MaterialEntity> materialEntity;
 	
 
@@ -50,10 +57,16 @@ public class UcxEntity {
 		return unPerBox;
 	}
 
-	public void setUnPerBox(int unPerBox) {
+	public void setUnPerBox(float unPerBox) {
 		this.unPerBox = unPerBox;
 	}
-	
-	
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 }

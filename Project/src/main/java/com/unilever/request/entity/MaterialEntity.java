@@ -15,7 +15,7 @@ public class MaterialEntity {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name="ucx_id")
+	@JoinColumn(name="_id")
 	private UcxEntity ucxEntity;
 
 	private String name, unName, cod;
