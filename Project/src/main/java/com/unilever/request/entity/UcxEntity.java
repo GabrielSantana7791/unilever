@@ -25,7 +25,7 @@ public class UcxEntity {
 	private float unPerBox;
 	
 	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="idd")
+	@JoinColumn(name="_id")
 	private List<MaterialEntity> materialEntity;
 	
 

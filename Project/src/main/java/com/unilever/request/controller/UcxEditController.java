@@ -69,5 +69,35 @@ public class UcxEditController {
 		
 		return "ucx-edit";
 	}
+	
+	@PostMapping(value= "ucx-delete")
+	public String deleteUcx(int ucxCod, Model model) {
+		UcxEntity ucxEntity = ucxRep.findByUcxId(ucxCod);
+		Message message = new Message();
+		
+		if(ucxEntity == null) {
+			message.setMsg("SKU não encontrado ou já foi deletado anteriormente");
+			message.setType("error");
+			model.addAttribute("message", message);
+			
+			return "ucx-edit";
+			
+		}
+		
+		UcxEntity ucxToDelete = ucxRep.findByUcxId(ucxCod);
+		ucxRep.deleteById(ucxToDelete.getId());
+		ucxRep.flush();
+		
+		message.setMsg("Deletado com sucesso");
+		message.setType("success");
+		model.addAttribute("message", message);
+		
+		return "ucx-edit";
+	}
+	
+	@GetMapping(value= "ucx-delete")
+	public String deleteUcx() {
+		return "redirect:/ucx-edit";
+	}
 
 }

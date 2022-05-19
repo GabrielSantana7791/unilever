@@ -65,10 +65,19 @@
 						<button class="btn btn-primary" type="submit">Aplicar
 							mudanças</button>
 					</div>
-				</div>
-				<input type="hidden" name="oldUcxCod" th:value="${ucxEntity.ucxId}">
+					<input type="hidden" name="oldUcxCod" th:value="${ucxEntity.ucxId}">
 			</form>
+			<div class="col-auto">
+				<form action="/ucx-delete" method="post">
+					<input type="hidden" th:value="${ucxEntity.ucxId}" name="ucxCod">
+					<button class="btn btn-danger" type="submit" onClick="return formConfirm('SKU');">Deletar</button>
+				</form>
+
+			</div>
 		</div>
+
+
+	</div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -83,5 +92,6 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 	<script src="css/bootstrap.js"></script>
+	<script src="js/Confirmation.js"></script>
 </body>
 </html>
