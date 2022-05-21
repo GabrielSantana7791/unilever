@@ -26,7 +26,28 @@ public class MaterialEntity {
 
 	}
 	
+	@Override
+	public String toString() {
+		return "MaterialEntity [id=" + id + ", ucxEntity=" + ucxEntity + ", name=" + name + ", unName=" + unName
+				+ ", cod=" + cod + ", unPerBox=" + unPerBox + ", unTotal=" + unTotal + ", weightToProduceOne="
+				+ weightToProduceOne + ", box=" + box + ", multiple=" + multiple + "]";
+	}
+
 	public MaterialEntity(UcxEntity ucxEntity, String name, String unName, String cod, float unPerBox, float unTotal,
+			float weightToProduceOne, Boolean box, Boolean multiple){
+		
+		this.ucxEntity = ucxEntity;
+		this.name = name;
+		this.unName = unName;
+		this.cod = cod;
+		this.unPerBox = unPerBox;
+		this.unTotal = unTotal;
+		this.weightToProduceOne = weightToProduceOne;
+		this.box = box;
+		this.multiple = multiple;
+	}
+	
+	public void setAll(UcxEntity ucxEntity, String name, String unName, String cod, float unPerBox, float unTotal,
 			float weightToProduceOne, Boolean box, Boolean multiple){
 		
 		this.ucxEntity = ucxEntity;

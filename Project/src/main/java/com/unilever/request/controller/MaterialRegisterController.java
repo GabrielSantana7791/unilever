@@ -75,7 +75,10 @@ public class MaterialRegisterController {
 			Message message = new Message();
 			message.setType("success");
 			message.setMsg("Material cadastrado com sucesso");
-
+			
+			List<UcxEntity> ucxList = ucxRep.findAll();
+			
+			model.addAttribute("ucxList", ucxList);
 			model.addAttribute("message", message);
 
 			return "material-register";

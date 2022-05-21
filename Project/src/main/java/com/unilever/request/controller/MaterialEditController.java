@@ -71,15 +71,19 @@ public class MaterialEditController {
 		Message message = new Message();
 		MaterialEntity material = materialRep.findByCod(oldMaterialCod);
 
-		if(!material.equals(null)) {
-			material = new MaterialEntity(ucxRep.findByUcxId(ucxCod), name, unName, cod, unPerBox, unTotal, 
+		if(material !=null) {
+			material.setAll(ucxRep.findByUcxId(ucxCod), name, unName, cod, unPerBox, unTotal, 
 					weightToProduceOne, box, multiple);
+			material.setId(material.getId());
 
 			message.setType("success");
-			message.setMsg("Editado com sucesso");
+			message.setMsg("Material editado com sucesso");
 
 			materialRep.flush();
+			
+			List<UcxEntity> ucxList = ucxRep.findAll();
 
+			model.addAttribute("ucxList", ucxList);
 			model.addAttribute("materialEntity", material);
 			model.addAttribute("message", message);
 
