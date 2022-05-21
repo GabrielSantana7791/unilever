@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.unilever.request.entity.UserEntity;
 import com.unilever.request.etc.Login;
 import com.unilever.request.etc.Message;
+import com.unilever.request.exceptions.EmptUserException;
+import com.unilever.request.exceptions.InvalidUserException;
 
 @Controller
 public class SessionController {
@@ -24,25 +26,40 @@ public class SessionController {
 	}
 	
 	@GetMapping(value = "/login")
-	public String login (Model model) {
-		return "login";
+	public String login (Model model, HttpSession httpSession) {
+		try {
+			login.check(httpSession);
+			return "redirect:/";
+			
+		} catch (InvalidUserException e) {
+			httpSession.invalidate();
+			
+			return "login";
+		}  catch (EmptUserException e) {
+			httpSession.invalidate();
+			
+			return "login";
+		}
+		
 	}
 	
 	@PostMapping(value = "/login")
-	public String login(HttpSession httpSession, UserEntity user, Model model) {
+	public String login(HttpSession httpSession, UserEntity userEntity, Model model) {
 		try {
-			UserEntity validatedUser = login.login(user);
-			
-			httpSession.setAttribute("user", validatedUser);
-			
+			login.login(httpSession, userEntity);
 			return "redirect:/";
 			
-		} catch (Exception e) {
-			Message message = new Message();
-			message.setType("error");
-			message.setMsg("Usuário não encontrado ou senha inválida");
+		} catch (InvalidUserException e) {
+			Message message = new Message("error", "Usuário não encontrado ou senha inválida");
 			
 			model.addAttribute("message", message);
+			
+			return "login";
+		} catch (NullPointerException e) {
+			Message message = new Message("error", "Usuário não encontrado ou senha inválida");
+			
+			model.addAttribute("message", message);
+			
 			return "login";
 		}
 		

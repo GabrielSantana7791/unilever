@@ -11,3 +11,7 @@ div{
 .navbar-brand{
 	padding-left: 15px;
 }
+
+#navbar li{
+	padding-left: 25px;
+}

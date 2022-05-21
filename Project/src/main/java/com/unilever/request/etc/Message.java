@@ -2,6 +2,15 @@ package com.unilever.request.etc;
 
 public class Message {
 	private String msg, type;
+	
+	public Message() {
+		
+	}
+	
+	public Message(String type, String msg) {
+		this.type = type;
+		this.msg = msg;
+	}
 
 	public String getMsg() {
 		return msg;

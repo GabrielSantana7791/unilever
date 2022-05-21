@@ -25,6 +25,20 @@ public class MaterialEntity {
 	public MaterialEntity(){
 
 	}
+	
+	public MaterialEntity(UcxEntity ucxEntity, String name, String unName, String cod, float unPerBox, float unTotal,
+			float weightToProduceOne, Boolean box, Boolean multiple){
+		
+		this.ucxEntity = ucxEntity;
+		this.name = name;
+		this.unName = unName;
+		this.cod = cod;
+		this.unPerBox = unPerBox;
+		this.unTotal = unTotal;
+		this.weightToProduceOne = weightToProduceOne;
+		this.box = box;
+		this.multiple = multiple;
+	}
 
 	public String getName() {
 		return name;

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/style.css">
+
+<title>Unilever</title>
+</head>
+<body>
+	<nav th:replace="~{fragment/navbar :: navBar}"></nav>
+	<div class="container">
+		<div th:if="${message}">
+			<div th:switch="${message.type}">
+				<div th:case="'success'" th:text="${message.msg}"
+					class="alert alert-success" role="alert"></div>
+				<div th:case="'error'" th:text="${message.msg}"
+					class="alert alert-danger" role="alert"></div>
+			</div>
+
+		</div>
+
+
+		<div>
+			<h3>Edição de material</h3>
+			<form action="/material-edit" method="get">
+				<div class="row">
+					<div class="col-auto">
+						<input placeholder="Código do material" type="number" name="materialCod"
+							class="form-control" min="0" step="1" required="true" />
+					</div>
+					<div class="col-auto">
+						<button class="btn btn-primary" type="submit">Pesquisar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div th:if="${materialEntity}" class="row">
+			<form action="/material-edit" method="post" class="" id="form">
+				<div class="row">
+					<div class="col-6">
+						<label for="">SKU</label> <select class="form-select"
+							aria-label="Default select example" name="ucxCod">
+							<div th:each="ucx: ${ucxList}">
+								<option th:selected="${ucx.ucxId == materialEntity.ucxEntity.ucxId}" th:text='${ucx.ucxId + " (" + ucx.name  + ")" }'
+									th:value='${ucx.ucxId}'></option>
+							</div>
+						</select>
+					</div>
+					<div class="col-6">
+						<label for="">Código</label> <input type="number" th:value="${materialEntity.Cod}"
+							class="form-control" placeholder="Exemplo: 6791878" name="cod"
+							min="0" step="1" required="required">
+
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<label for="">Descrição</label> <input type="text" th:value="${materialEntity.name}"
+							class="form-control" placeholder="Exemplo: Tampa 250g azul"
+							name="name" required="required">
+					</div>
+					<div class="col-3">
+						<label for="">Unidade</label> <select id="unType"
+							class="form-select" aria-label="Default select example"
+							required="required" name="unName" onchange="unTypeF()"> 
+							<option th:selected="${materialEntity.unName == 'un'}" value="un">un</option>
+							<option th:selected="${materialEntity.unName == 'KG'}" value="kg">KG</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-auto">
+						<label>Peso por unidade produzida</label> <input step="any"th:value="${#numbers.formatInteger(materialEntity.weightToProduceOne, 1)}"
+							id="weightToProduceOne" type="number" class="form-control"
+							placeholder="Exemplo: 0.013" name="weightToProduceOne"
+							required="required">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-auto">
+						<label>Envolvido por caixa</label> <input class="form-check-input" th:checked="${materialEntity.box == true}"
+							type="checkbox" id="box" name="box" onchange="boxChange()">
+					</div>
+					<div class="col-auto">
+						<label>Multiplica</label> <input class="form-check-input"  th:checked="${materialEntity.multiple == true}"
+							type="checkbox" id="multiple" name="multiple">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-auto">
+						<label>Unidade por caixa</label> <input type="number" th:value="${#numbers.formatInteger(materialEntity.unPerBox,1)}"
+							class="form-control" id="unPerBox" placeholder="Exemplo: 5"
+							name="unPerBox" min="0" step="1" required="required">
+					</div>
+					<div class="col-auto">
+						<label>Unidade total</label> <input type="number" th:value="${#numbers.formatInteger(materialEntity.unTotal,1)}"
+							class="form-control" placeholder="Exemplo: 10" name="unTotal" 
+							min="0" step="1" required="required">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<button class="btn btn-primary" type="submit">Aplicar edição</button>
+					</div>
+				</div>
+				<input type="hidden" name="oldMaterialCod" th:value="${materialEntity.cod}">
+			</form>
+		</div>
+
+
+	</div>
+
+	<script src="js/materialRegister.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+</html>

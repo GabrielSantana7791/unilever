@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.unilever.request.entity.MaterialEntity;
 import com.unilever.request.entity.UcxEntity;
-import com.unilever.request.entity.UserEntity;
 import com.unilever.request.etc.Login;
 import com.unilever.request.etc.Message;
 import com.unilever.request.repository.MaterialRepository;
@@ -34,8 +33,7 @@ public class MaterialRegisterController {
 	@GetMapping(value= "/material-register")
 	public String materialRegister(Model model, HttpSession httpSession) {
 		try {
-			UserEntity user = (UserEntity) httpSession.getAttribute("user");
-			user = login.login(user);
+			login.check(httpSession);
 
 			List<UcxEntity> ucxList = ucxRep.findAll();
 
@@ -50,12 +48,13 @@ public class MaterialRegisterController {
 	}
 
 	@PostMapping(value= "/material-register")
-	public String materialRegister(HttpSession httpSession, Model model, String name, String unName, int ucxCod,  @RequestParam(defaultValue = "0") float unPerBox,
-			float unTotal, @RequestParam(defaultValue = "0")  float weightToProduceOne, String cod, @RequestParam(defaultValue = "0") Boolean box,@RequestParam(defaultValue = "0") Boolean multiple) {
+	public String materialRegister(HttpSession httpSession, Model model, String name, String unName, int ucxCod,
+			@RequestParam(defaultValue = "0") float unPerBox,
+			float unTotal, @RequestParam(defaultValue = "0")  float weightToProduceOne,
+			String cod, @RequestParam(defaultValue = "0") Boolean box,@RequestParam(defaultValue = "0") Boolean multiple) {
 
 		try {
-			UserEntity user = (UserEntity) httpSession.getAttribute("user");
-			login.login(user);
+			login.check(httpSession);
 		} catch (Exception e) {
 			return "redirect:/login";
 		} 
@@ -64,19 +63,11 @@ public class MaterialRegisterController {
 			unPerBox = unTotal;
 		}
 
-		if(materialRep.findByCod(cod).isEmpty() == true) {
+		if(materialRep.findByCod(cod) == null) {
 			UcxEntity ucxEntity = ucxRep.findByUcxId(ucxCod);
 
-			MaterialEntity material = new MaterialEntity();
-			material.setName(name);
-			material.setUnName(unName);
-			material.setCod(cod);
-			material.setUcxEntity(ucxEntity);
-			material.setUnPerBox(unPerBox);
-			material.setUnTotal(unTotal);
-			material.setMultiple(multiple);
-			material.setBox(box);		
-			material.setWeightToProduceOne(weightToProduceOne);
+			MaterialEntity material = new MaterialEntity(ucxEntity, name, unName, cod, unPerBox, unTotal, 
+					weightToProduceOne, box, multiple);
 
 			materialRep.save(material);
 			materialRep.flush();

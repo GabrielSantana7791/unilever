@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.unilever.request.entity.UcxEntity;
-import com.unilever.request.entity.UserEntity;
 import com.unilever.request.etc.Login;
 import com.unilever.request.etc.Message;
 import com.unilever.request.repository.UcxRepository;
@@ -26,8 +25,7 @@ public class UcxRegisterController {
 	@GetMapping(value= "/ucx-register")
 	public String ucxRegister(HttpSession httpSession) {
 		try {
-			UserEntity user = (UserEntity) httpSession.getAttribute("user");
-			user = login.login(user);
+			login.check(httpSession);
 
 			return "ucx-register";
 		} catch (Exception e) {
@@ -41,8 +39,7 @@ public class UcxRegisterController {
 	public String ucxRegister(HttpSession httpSession, int ucxCod, String name, int unPerBox, Model model) {
 
 		try {
-			UserEntity user = (UserEntity) httpSession.getAttribute("user");
-			login.login(user);
+			login.check(httpSession);
 		} catch (Exception e) {
 			return "redirect:/login";
 		} 
@@ -56,18 +53,14 @@ public class UcxRegisterController {
 			ucxRep.save(ucx);
 			ucxRep.flush();
 
-			Message message = new Message();
-			message.setType("success");
-			message.setMsg("SKU cadastrado com sucesso");
+			Message message = new Message("success", "SKU cadastrado com sucesso");
 
 			model.addAttribute("message", message);
 
 			return "ucx-register";
 		}
 		
-		Message message = new Message();
-		message.setType("error");
-		message.setMsg("Erro: SKU já cadastrado no banco de dados");
+		Message message = new Message("error", "Erro: SKU já cadastrado no banco de dados");
 
 		model.addAttribute("message", message);
 
