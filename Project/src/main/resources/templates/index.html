@@ -17,18 +17,34 @@
 			</div>
 		</div>
 
-		<div class="row text-center">
-			<div class="col-4">
-				<a href="/material-register" class="btn btn-primary">Cadastro
-					material</a>
+		<div class="row text-center justify-content-center">
+			<div class="col-auto">
+				<div>
+					<a href="/manual" class="btn btn-primary">Consulta</a>
+				</div>
+			</div>
+			<div class="col-auto">
+				<div class="dropdown ">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">SKU</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="/ucx-register">Cadastrar SKU</a> <a
+							class="dropdown-item" href="/ucx-edit">Editar Sku</a>
+					</div>
+				</div>
 			</div>
 
-			<div class="col-4">
-				<a href="/ucx-register" class="btn btn-primary">Cadastro SKU</a>
-			</div>
-
-			<div class="col-4">
-				<a href="/manual" class="btn btn-primary">Consulta manual</a>
+			<div class="col-auto">
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle" type="button"
+						id="dropdownMenuButton" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Material</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="material-register">Cadastrar material</a> <a
+							class="dropdown-item" href="material-edit">Editar material</a>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -39,7 +55,7 @@
 			gabrielsantana7791@gmail.com</div>
 
 	</footer>
-	
+
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
